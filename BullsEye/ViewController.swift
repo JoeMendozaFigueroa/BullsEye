@@ -9,6 +9,7 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    //These are the various variables to identify the Objects in the scene.
     @IBOutlet var slider: UISlider!
     
     @IBOutlet var targetLabel: UILabel!
@@ -43,7 +44,7 @@ class ViewController: UIViewController {
         slider.value = Float(currentValue)//Adding ".random" after "Float" places the slider random position during a New Round, instead of the halfway mark of 50
         updateLabels()
     }
-    
+    //This is the method which starts a new round.
     @IBAction func startNewGame() {
         score = 0
         round = 0
@@ -73,6 +74,7 @@ class ViewController: UIViewController {
         let thumbImageHighLighted = UIImage(named: "SliderThumb-Highlighted")!
         slider.setThumbImage(thumbImageHighLighted, for: .highlighted)
         
+        //This is the method for the constraints on the 
         let insets = UIEdgeInsets(
             top: 0,
             left: 14,
@@ -97,10 +99,13 @@ class ViewController: UIViewController {
         
         var points = 100 - difference
         
+        //This is the title of the pop-up screen
         let title: String
         if difference == 0 {
             title = "BULLS EYE!!"
             points += 900 //This increases the points title message to 1000. 100 + 900
+            
+            //Below are the boolean results of where the user places the slider.
         } else if difference < 5 {
             title = "You almost had it!"
             if difference == 1{
@@ -111,9 +116,10 @@ class ViewController: UIViewController {
         } else {
             title = "Not even close..."
         }
-        
+        //This adds the points to the round
         score += points
         
+        //This is the text on the pop-up screen
         let message = "Target value was: \(targetValue)" +
         "\n Your current value is: \(currentValue)" + "\n" +
         "\n You scored: \(points) points"
